@@ -1,48 +1,48 @@
 
-import 'reflect-metadata'
-const amqp = require('amqplib/callback_api')
-import { JsonController, Get } from 'routing-controllers'
+// import 'reflect-metadata'
+// const amqp = require('amqplib/callback_api')
+// import { JsonController, Get } from 'routing-controllers'
 
 
-@JsonController()
-export class LogsController {
+// @JsonController()
+// export class LogsController {
 
-  @Get('/logs')
-  async getAllLogs() {
+//   @Get('/logs')
+//   async getAllLogs() {
 
-    let myLogs = []
+//     let myLogs = []
 
-    await amqp.connect(process.env.AMQP_URL, function(error0: any, connection: { createChannel: (arg0: (error1: any, channel: any) => void) => void; }) {
+//     await amqp.connect(process.env.AMQP_URL, function(error0: any, connection: { createChannel: (arg0: (error1: any, channel: any) => void) => void; }) {
       
-      if (error0) {
-        throw error0;
-      }
+//       if (error0) {
+//         throw error0;
+//       }
 
-      connection.createChannel(function(error1: any, channel: { assertQueue: (arg0: string, arg1: { durable: boolean; }) => void; consume: (arg0: string, arg1: (msg: { content: any; }) => void, arg2: { noAck: boolean; }) => void; }) {
-          if (error1) {
-            throw error1;
-          }
+//       connection.createChannel(function(error1: any, channel: { assertQueue: (arg0: string, arg1: { durable: boolean; }) => void; consume: (arg0: string, arg1: (msg: { content: any; }) => void, arg2: { noAck: boolean; }) => void; }) {
+//           if (error1) {
+//             throw error1;
+//           }
 
-          var queue = 'hello';
+//           var queue = 'hello';
 
-          channel.assertQueue(queue, {
-            durable: false
-          });
+//           channel.assertQueue(queue, {
+//             durable: false
+//           });
 
-          console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
+//           console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
 
-          channel.consume(queue, function(msg: { content: any; }) {
-            myLogs.push('push test')
-            console.log(" [x] Received %s", msg.content);
-          }, {
-            noAck: true
-          });
-      });
-    });
+//           channel.consume(queue, function(msg: { content: any; }) {
+//             myLogs.push('push test')
+//             console.log(" [x] Received %s", msg.content);
+//           }, {
+//             noAck: true
+//           });
+//       });
+//     });
 
-    myLogs.push('push test 2')
+//     myLogs.push('push test 2')
 
-    return myLogs;
-  }
+//     return myLogs;
+//   }
 
-}
+// }
