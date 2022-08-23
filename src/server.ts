@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000
 
 // initial test
 app.get('/', (req, res) => {
-  res.send('Estamos ON!')
+  res.send('Application ON!')
 })
 
 

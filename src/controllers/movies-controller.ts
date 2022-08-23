@@ -76,14 +76,17 @@ routerMovie.post("/", async function (req: Request, res: Response) {
   return res.send(results)
 })
 
-routerMovie.delete("/", async function (req: Request, res: Response) {
+routerMovie.delete("/:index", async function (req: Request, res: Response) {
+
   try {
-    const results = await appDataSource.getRepository(Movies).delete(req.body.index)
+    const results = await appDataSource.getRepository(Movies).delete(req.params)
 
     return res.send(results)
+    
   } catch (error) {
     console.log(error)
   }
+
 })
 
 // routerMovie.get("/users/:id", async function (req: Request, res: Response) {
