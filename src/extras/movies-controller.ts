@@ -29,7 +29,7 @@ routerMovie.get("/random", async function (req: Request, res: Response) {
   console.log(randomMovie)
 
 
-  amqp.connect('amqps://nwlrexpz:cQhwbkETvUQnxASl5LixDQ7YzGzVRD9X@jackal.rmq.cloudamqp.com/nwlrexpz', function(error0, connection) {
+  amqp.connect(process.env.AMQP_URL, function(error0, connection) {
     if (error0) {
       throw error0;
     }

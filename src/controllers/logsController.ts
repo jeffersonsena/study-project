@@ -12,7 +12,7 @@ export class LogsController {
 
     let myLogs = []
 
-    await amqp.connect('amqps://nwlrexpz:cQhwbkETvUQnxASl5LixDQ7YzGzVRD9X@jackal.rmq.cloudamqp.com/nwlrexpz', function(error0: any, connection: { createChannel: (arg0: (error1: any, channel: any) => void) => void; }) {
+    await amqp.connect(process.env.AMQP_URL, function(error0: any, connection: { createChannel: (arg0: (error1: any, channel: any) => void) => void; }) {
       
       if (error0) {
         throw error0;

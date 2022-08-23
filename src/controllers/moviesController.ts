@@ -27,7 +27,7 @@ export class MoviesController {
 
     console.log(randomMovie)
 
-    await amqp.connect('amqps://nwlrexpz:cQhwbkETvUQnxASl5LixDQ7YzGzVRD9X@jackal.rmq.cloudamqp.com/nwlrexpz', function(error0, connection) {
+    await amqp.connect(process.env.AMQP_URL, function(error0, connection) {
     if (error0) {
       throw error0;
     }

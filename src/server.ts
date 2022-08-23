@@ -1,8 +1,12 @@
+
+import 'dotenv/config'
 import app from './app'
 import 'reflect-metadata'
 
-const port = process.env.PORT || 3000
 
+require('dotenv').config()
+
+const port = process.env.PORT || 3000
 
 // initial test
 app.get('/', (req, res) => {
