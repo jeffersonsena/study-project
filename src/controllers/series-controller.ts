@@ -10,6 +10,15 @@ import { appDataSource } from "../app-data-source"
 // register routes
 const routerSeries = express.Router()
 
+// INITIAL PAGE
+routerSeries.get("/", async function (req: Request, res: Response) {
+
+  const list = `Séries disponíveis no momento:  Friends (/friends)  | How I Met Your Mother (/himym)  | Rick and Morty (/rickmorty)`
+
+  res.send(list)
+})
+
+
 // HOW I MET YOUR MOTHER
 routerSeries.get("/himym", async function (req: Request, res: Response) {
 
