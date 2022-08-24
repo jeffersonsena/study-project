@@ -1,6 +1,6 @@
 
 const express = require('express')
-const amqp = require('amqplib/callback_api')
+// const amqp = require('amqplib/callback_api')
 import { Request, Response, Router } from "express"
 import { Movies } from "../entity/Movies"
 import { appDataSource } from "../app-data-source"
@@ -29,30 +29,30 @@ routerMovie.get("/random", async function (req: Request, res: Response) {
   console.log(randomMovie)
 
 
-  amqp.connect(process.env.AMQP_URL, function(error0, connection) {
-    if (error0) {
-      throw error0;
-    }
-    connection.createChannel(function(error1, channel) {
-      if (error1) {
-        throw error1;
-      }
+  // amqp.connect(process.env.AMQP_URL, function(error0, connection) {
+  //   if (error0) {
+  //     throw error0;
+  //   }
+  //   connection.createChannel(function(error1, channel) {
+  //     if (error1) {
+  //       throw error1;
+  //     }
 
-      let queue = 'hello';
-      let msg = req.body;
+  //     let queue = 'hello';
+  //     let msg = req.body;
 
-      channel.assertQueue(queue, {
-        durable: false
-      });
-      channel.sendToQueue(queue, Buffer.from(JSON.stringify(randomMovie)));
+  //     channel.assertQueue(queue, {
+  //       durable: false
+  //     });
+  //     channel.sendToQueue(queue, Buffer.from(JSON.stringify(randomMovie)));
 
-      console.log(" [x] Sent %s", randomMovie);
-    });
-    // setTimeout(function() {
-    //   connection.close();
-    //   process.exit(0);
-    // }, 500);
-  })
+  //     console.log(" [x] Sent %s", randomMovie);
+  //   });
+  //   // setTimeout(function() {
+  //   //   connection.close();
+  //   //   process.exit(0);
+  //   // }, 500);
+  // })
 
 
   return res.send(`Assista o filme: ${randomMovie.movies_Title.toUpperCase()}`)
