@@ -1,6 +1,6 @@
 
 const express = require('express')
-// import { Request, Response } from "express"
+import { Request, Response } from "express"
 import { appDataSource } from "./app-data-source"
 import routerLogs from "./controllers/logs-controller"
 import routerMovie from "./controllers/movies-controller"
@@ -22,6 +22,13 @@ app.use(express.json())
 app.use('/movies', routerMovie)
 app.use('/series', routerSeries)
 app.use('/logs', routerLogs)
+
+
+// Especial Medi
+app.get("/medi", async function (req: Request, res: Response) {
+
+  res.send('Te amo bb!! ❤️😍')
+})
 
 
 // establish database connection
