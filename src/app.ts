@@ -53,7 +53,9 @@ amqp.connect(process.env.AMQP_URL, function(error0, connection) {
       channel.consume(queue, async function(msg) {
         console.log(" [x] Received %s", msg.content)
 
-        await LogInfo.saveLogs(msg.content.toString())
+        const logSaved = await LogInfo.saveLogs(msg.content.toString())
+
+        console.log(logSaved)
 
         setTimeout(function() {
           console.log(" [x] Done")

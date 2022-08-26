@@ -42,7 +42,7 @@ export default class LogInfo {
     const movieReceived = appDataSource.getRepository(Logs).create({ "log_Info": logInfo })
     await appDataSource.getRepository(Logs).save(movieReceived)
 
-    console.log('Log adicionado a tabela!')
+    return ' [x] Log adicionado a tabela!'
   }
   
 }
